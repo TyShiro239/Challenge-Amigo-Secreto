@@ -1,5 +1,4 @@
 let nomeDosAmigos = [];
-//let numeroAleatorio = Math.floor(Math.random() * nomeDosAmigos.length);
 
 
 
@@ -7,11 +6,12 @@ function adicionarAmigo() {
     let nome = document.querySelector("input").value;
     if ((nome.trim()).length !== 0){
         nomeDosAmigos.push(nome);
-        nome.innerHTML = ""
         
         limparCampo();
 
         listaDeAmigos();
+
+        mensagemDeSorteio();
     
     }else{
         alert("Por favor, insira um nome válido.");
@@ -21,7 +21,22 @@ function adicionarAmigo() {
 }
 
 
-//function sortearAmigo(){}
+function sortearAmigo() {
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = "";
+    
+    if (nomeDosAmigos.length > 0) {
+        let amigoSorteado = `O amigo secreto sorteado é: ${nomeDosAmigos[Math.floor(Math.random() * nomeDosAmigos.length)]}`;
+        const li = document.createElement("li");
+        li.textContent = amigoSorteado;
+        resultado.appendChild(li);
+    } else {
+        let mensagem = "Não há amigos na lista para sortear.";
+        const li = document.createElement("li");
+        li.textContent = mensagem;
+        resultado.appendChild(li);
+    }
+}
 
 
 function limparCampo(){
@@ -30,7 +45,7 @@ function limparCampo(){
 }
 
 function listaDeAmigos(){
-    listaAmigos = document.querySelector("#listaAmigos");
+    let listaAmigos = document.getElementById("listaAmigos");
     listaAmigos.innerHTML = "";
 
     nomeDosAmigos.forEach(nome =>{
