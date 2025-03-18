@@ -10,8 +10,6 @@ function adicionarAmigo() {
         limparCampo();
 
         listaDeAmigos();
-
-        mensagemDeSorteio();
     
     }else{
         alert("Por favor, insira um nome válido.");
